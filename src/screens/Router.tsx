@@ -1,17 +1,29 @@
-import {LoginScreen, MainScreen, SettingsScreen, Test} from './index';
+import {
+  LoginScreen,
+  MainScreen,
+  SettingsScreen,
+  MatchingScreen,
+  MatchingDoneScreen,
+} from './index';
 import React from 'react';
-import {NativeRouter, Route, Switch} from 'react-router-native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
 
 export default class Router extends React.Component {
   render() {
     return (
-      <NativeRouter>
-        <Switch>
-          <Route exact path="/" component={LoginScreen} />
-          <Route exact path="/main" component={MainScreen} />
-          <Route exact path="/settings" component={SettingsScreen} />
-        </Switch>
-      </NativeRouter>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="Home" component={LoginScreen} />
+        <Stack.Screen name="Main" component={MainScreen} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="Matching" component={MatchingScreen} />
+        <Stack.Screen name="MatchingDone" component={MatchingDoneScreen} />
+      </Stack.Navigator>
     );
   }
 }

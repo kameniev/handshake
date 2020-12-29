@@ -1,19 +1,19 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import {TouchableOpacity, Text} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'components/UI/Icon';
-import {useHistory} from 'react-router-native';
+import {useNavigation} from '@react-navigation/native';
+import {Dimensions} from 'react-native';
+
+const windowHeight = Dimensions.get('window').height;
 
 function LoginButton() {
-  let history = useHistory();
-
-  function handleClick() {
-    history.push('/main');
-  }
+  const navigation = useNavigation();
 
   return (
-    <LoginContainer onPress={handleClick}>
+    <LoginContainer
+      size={windowHeight}
+      onPress={() => navigation.navigate('Main')}>
       <StyledGradient
         colors={['#36D1DC', '#5B86E5']}
         start={{x: 0, y: 0.5}}
@@ -33,12 +33,12 @@ function LoginButton() {
 export default LoginButton;
 
 const LoginContainer = styled.TouchableOpacity`
-  margin-top: 75%;
+  margin-top: ${({size}) => (size >= 700 ? '75%' : '45%')};
   margin-left: auto;
   margin-right: auto;
   width: 284px;
   height: 50px;
-  border-radius: ${({theme}) => theme.borderRadius.Button};
+  border-radius: ${({theme}) => theme.borderRadius.button};
 `;
 
 const StyledGradient = styled(LinearGradient)`
@@ -53,8 +53,8 @@ const StyledGradient = styled(LinearGradient)`
 const LoginButtonText = styled.Text`
   text-align: center;
   color: ${({theme}) => theme.colors.ui.gray};
-  font-size: ${({theme}) => theme.typeScale.NextButton};
-  line-height: ${({theme}) => theme.lineHeight.NextButton};
+  font-size: ${({theme}) => theme.typeScale.nextButton};
+  line-height: ${({theme}) => theme.lineHeight.nextButton};
 `;
 
 const Flag = styled.View`

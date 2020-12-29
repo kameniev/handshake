@@ -33,7 +33,7 @@ const InputContainer = styled.View`
   height: 50px;
   margin-top: 27px;
   padding-left: 20px;
-  border-radius: ${({theme}) => theme.borderRadius.Input};
+  border-radius: ${({theme}) => theme.borderRadius.input};
   background: ${({theme}) => theme.colors.system.white};
   box-shadow: ${({theme}) => theme.shadow.basic};
 `;

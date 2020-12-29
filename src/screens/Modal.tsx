@@ -63,7 +63,7 @@ const ModalWrapper = styled.View`
   width: 355px;
   height: 204px;
   align-items: center;
-  border-radius: ${({theme}) => theme.borderRadius.Modal};
+  border-radius: ${({theme}) => theme.borderRadius.modal};
   background-color: ${({theme}) => theme.colors.system.white}; ;
 `;
 
@@ -75,8 +75,8 @@ const IconWrapper = styled.TouchableOpacity`
 
 const GradientText = styled.Text`
   font-family: ${({theme}) => theme.fontFamilyNunitoBlack};
-  font-size: ${({theme}) => theme.typeScale.ModalTitle};
-  line-height: ${({theme}) => theme.lineHeight.ModalTitle};
+  font-size: ${({theme}) => theme.typeScale.modalTitle};
+  line-height: ${({theme}) => theme.lineHeight.modalTitle};
 `;
 
 const Subtitle = styled.Text`
@@ -104,20 +104,19 @@ const StyledGradient = styled(LinearGradient)`
 `;
 
 const NextButton = styled.TouchableOpacity`
-  display: flex;
   margin-top: 10px;
   width: 246px;
   height: 40px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: ${({theme}) => theme.borderRadius.Button};
+  border-radius: ${({theme}) => theme.borderRadius.button};
 `;
 
 const NextButtonText = styled.Text`
   text-align: center;
   color: ${({theme}) => theme.colors.ui.gray};
-  font-size: ${({theme}) => theme.typeScale.NextButton};
-  line-height: ${({theme}) => theme.lineHeight.NextButton};
+  font-size: ${({theme}) => theme.typeScale.nextButton};
+  line-height: ${({theme}) => theme.lineHeight.nextButton};
 `;
 
 const GradientWrapper = styled(LinearTextGradient)`

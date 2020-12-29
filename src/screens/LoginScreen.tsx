@@ -45,7 +45,7 @@ export default LoginScreen;
 const Title = styled.Text`
   color: ${({theme}) => theme.colors.ui.blue};
   font-family: ${({theme}) => theme.fontFamilyNunitoBlack};
-  font-size: ${({theme}) => theme.typeScale.Title};
+  font-size: ${({theme}) => theme.typeScale.title};
 `;
 
 const GradientText = styled(LinearTextGradient)`
@@ -66,8 +66,8 @@ const Description = styled.Text`
   margin-top: 19px;
   font-style: normal;
   font-weight: 500;
-  font-size: ${({theme}) => theme.typeScale.Description};
-  line-height: ${({theme}) => theme.lineHeight.Description};
+  font-size: ${({theme}) => theme.typeScale.description};
+  line-height: ${({theme}) => theme.lineHeight.description};
   letter-spacing: 0.005px;
   text-decoration-line: underline;
 

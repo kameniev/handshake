@@ -32,18 +32,17 @@ const StyledGradient = styled(LinearGradient)`
 `;
 
 const NextButton = styled.TouchableOpacity`
-  display: flex;
   width: 284px;
   margin-top: 50px;
   height: 50px;
   margin-left: auto;
   margin-right: auto;
-  border-radius: ${({theme}) => theme.borderRadius.Button};
+  border-radius: ${({theme}) => theme.borderRadius.button};
 `;
 
 const NextButtonText = styled.Text`
   text-align: center;
   color: ${({theme}) => theme.colors.ui.gray};
-  font-size: ${({theme}) => theme.typeScale.NextButton};
-  line-height: ${({theme}) => theme.lineHeight.NextButton};
+  font-size: ${({theme}) => theme.typeScale.nextButton};
+  line-height: ${({theme}) => theme.lineHeight.nextButton};
 `;

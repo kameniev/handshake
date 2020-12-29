@@ -12,6 +12,9 @@ import Icon from 'components/UI/Icon';
 import {ui} from 'utils/colors';
 import OnboardList from 'components/OnboardList';
 import LinearGradient from 'react-native-linear-gradient';
+import {Dimensions} from 'react-native';
+
+const windowHeight = Dimensions.get('window').height;
 
 const data = [
   {
@@ -37,21 +40,21 @@ type OnboardProps = {
   handleDone: Function;
 };
 
-const Onboard = ({handleDone}: OnboardProps) => {
+function Onboard({handleDone}: OnboardProps) {
   const renderItem = ({item}) => {
     switch (item.id) {
       case 1:
         return (
           <View>
-            <Title>{item.title}</Title>
-            <MainTextFS>{item.text}</MainTextFS>
+            <Title size={windowHeight}>{item.title}</Title>
+            <MainTextFS size={windowHeight}>{item.text}</MainTextFS>
           </View>
         );
       case 2:
         return (
           <View>
-            <Title>{item.title}</Title>
-            <Subtitle>{item.text}</Subtitle>
+            <Title size={windowHeight}>{item.title}</Title>
+            <Subtitle size={windowHeight}>{item.text}</Subtitle>
 
             <OnboardList />
           </View>
@@ -59,8 +62,8 @@ const Onboard = ({handleDone}: OnboardProps) => {
       case 3:
         return (
           <View>
-            <Title>{item.title}</Title>
-            <Subtitle>{item.text}</Subtitle>
+            <Title size={windowHeight}>{item.title}</Title>
+            <Subtitle size={windowHeight}>{item.text}</Subtitle>
             <List>
               <MainWrapper>
                 <ImageWrapper
@@ -89,7 +92,7 @@ const Onboard = ({handleDone}: OnboardProps) => {
               </MainWrapper>
             </List>
 
-            <NextButton onPress={handleDoneFinish}>
+            <NextButton size={windowHeight} onPress={handleDoneFinish}>
               <StyledGradient
                 colors={['#36D1DC', '#5B86E5']}
                 start={{x: 0, y: 0.5}}
@@ -121,7 +124,7 @@ const Onboard = ({handleDone}: OnboardProps) => {
       />
     </View>
   );
-};
+}
 
 export default Onboard;
 
@@ -133,20 +136,19 @@ const StyledGradient = styled(LinearGradient)`
 `;
 
 const NextButton = styled.TouchableOpacity`
-  display: flex;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 83px;
+  margin-top: ${({size}) => (size >= 700 ? '83px' : '13px')};
   width: 284px;
   height: 50px;
-  border-radius: ${({theme}) => theme.borderRadius.Button};
+  border-radius: ${({theme}) => theme.borderRadius.button};
 `;
 
 const NextButtonText = styled.Text`
   text-align: center;
   color: ${({theme}) => theme.colors.ui.gray};
-  font-size: ${({theme}) => theme.typeScale.NextButton};
-  line-height: ${({theme}) => theme.lineHeight.NextButton};
+  font-size: ${({theme}) => theme.typeScale.nextButton};
+  line-height: ${({theme}) => theme.lineHeight.nextButton};
 `;
 
 const ImageWrapper = styled(LinearGradient)`
@@ -158,38 +160,31 @@ const ImageWrapper = styled(LinearGradient)`
 `;
 
 const Title = styled.Text`
-  margin-top: 25%;
+  margin-top: ${({size}) => (size >= 700 ? '25%' : '5%')};
   text-align: center;
-  line-height: ${({theme}) => theme.lineHeight.OnboardTitle};
-  font-size: ${({theme}) => theme.typeScale.OnboardTitle};
-  color: ${({theme}) => theme.colors.ui.OnboardBlue};
+  line-height: ${({theme}) => theme.lineHeight.onboardTitle};
+  font-size: ${({theme}) => theme.typeScale.onboardTitle};
+  color: ${({theme}) => theme.colors.ui.onboardBlue};
 `;
 
 const MainTextFS = styled.Text`
-  margin-top: 50px;
+  margin-top: ${({size}) => (size >= 700 ? '50px' : '30px')};
   text-align: center;
-  line-height: ${({theme}) => theme.lineHeight.OnboardMain};
-  font-size: ${({theme}) => theme.typeScale.OnboardMain};
-  color: ${({theme}) => theme.colors.ui.OnboardGray};
+  line-height: ${({theme}) => theme.lineHeight.onboardMain};
+  font-size: ${({theme}) => theme.typeScale.onboardMain};
+  color: ${({theme}) => theme.colors.ui.onboardGray};
 `;
 
 const Subtitle = styled.Text`
-  margin-top: 32px;
+  margin-top: ${({size}) => (size >= 700 ? '32px' : '12px')};
   text-align: center;
-  line-height: ${({theme}) => theme.lineHeight.OnboardMain};
-  font-size: ${({theme}) => theme.typeScale.OnboardMain};
-  color: ${({theme}) => theme.colors.ui.OnboardGray};
-`;
-
-const IconWrapper = styled.View`
-  border: 1px solid black;
-  width: 333px;
-  height: 398px;
+  line-height: ${({theme}) => theme.lineHeight.onboardMain};
+  font-size: ${({theme}) => theme.typeScale.onboardMain};
+  color: ${({theme}) => theme.colors.ui.onboardGray};
 `;
 
 const List = styled.View`
-  margin-top: 32px;
-  margin-left: 65px;
+  margin: 35px auto 0;
 `;
 
 const MainWrapper = styled.View`
@@ -202,19 +197,17 @@ const MainImage = styled.Image`
   width: 94px;
   height: 94px;
   border-radius: 250px;
-  box-shadow: ${({theme}) => theme.shadow.Search};
+  box-shadow: ${({theme}) => theme.shadow.search};
 `;
 
 const MainText = styled.Text`
   margin-left: 17px;
   margin-top: 32px;
   font-weight: bold;
-  font-size: ${({theme}) => theme.typeScale.OnboardList};
+  font-size: ${({theme}) => theme.typeScale.onboardList};
 `;
 
-const ConnectorWrapper = styled.View`
-  margin-left: -65px;
-`;
+const ConnectorWrapper = styled.View``;
 
 const styles = StyleSheet.create({
   dotStyle: {

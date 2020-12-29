@@ -11,6 +11,7 @@ import Profile from 'assets/icons/profile.svg';
 import Cancel from 'assets/icons/cancel.svg';
 import Handshake from 'assets/icons/handshake.svg';
 import Arrow from 'assets/icons/arrow.svg';
+import BigConnector from 'assets/icons/big-connector.svg';
 
 const Icons = {
   EyeIcon1: EyeIcon1,
@@ -25,6 +26,7 @@ const Icons = {
   Cancel: Cancel,
   Handshake: Handshake,
   Arrow: Arrow,
+  BigConnector: BigConnector,
 };
 
 export type IconName = keyof typeof Icons;
