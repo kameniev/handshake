@@ -7,7 +7,7 @@ import matchedData from 'data/matchedData';
 import Icon from 'components/UI/Icon';
 import NextButton from 'components/UI/NextButton';
 import {Dimensions} from 'react-native';
-import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
+import {RouteProp, useRoute} from '@react-navigation/native';
 
 const windowHeight = Dimensions.get('window').height;
 const flatlistHeight = windowHeight - 540;
