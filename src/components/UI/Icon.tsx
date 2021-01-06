@@ -2,7 +2,6 @@ import React from 'react';
 import EyeIcon1 from 'assets/icons/eye-line-1.svg';
 import EyeIcon2 from 'assets/icons/eye-line-2.svg';
 import Search from 'assets/icons/search.svg';
-import Stars from 'assets/images/stars.svg';
 import Ellipse from 'assets/icons/ellipse.svg';
 import Connector from 'assets/icons/connector.svg';
 import Insta from 'assets/icons/insta.svg';
@@ -17,7 +16,6 @@ const Icons = {
   EyeIcon1: EyeIcon1,
   EyeIcon2: EyeIcon2,
   Search: Search,
-  Stars: Stars,
   Ellipse: Ellipse,
   Connector: Connector,
   Insta: Insta,

@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  TouchableOpacity,
-  View,
-  StatusBar,
-  StyleSheet,
-  Text,
-} from 'react-native';
+import {View, StatusBar, StyleSheet, Image} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import styled from 'styled-components/native';
 import Icon from 'components/UI/Icon';
@@ -49,6 +43,12 @@ function Onboard({handleDone}: OnboardProps) {
           <SafeAreaView>
             <Title size={windowHeight}>{item.title}</Title>
             <MainTextFS size={windowHeight}>{item.text}</MainTextFS>
+            <StarsWrapper>
+              <Image
+                style={{width: 303, height: 368}}
+                source={require('assets/images/stars.png')}
+              />
+            </StarsWrapper>
           </SafeAreaView>
         );
       case 2:
@@ -133,6 +133,13 @@ function Onboard({handleDone}: OnboardProps) {
 }
 
 export default Onboard;
+
+const StarsWrapper = styled.View`
+  margin-top: 25px;
+  margin-left: 25px;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Content = styled.View`
   flex: 1 0 auto;
