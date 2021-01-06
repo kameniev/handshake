@@ -13,6 +13,7 @@ import {ui} from 'utils/colors';
 import OnboardList from 'components/OnboardList';
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -45,52 +46,57 @@ function Onboard({handleDone}: OnboardProps) {
     switch (item.id) {
       case 1:
         return (
-          <View>
+          <SafeAreaView>
             <Title size={windowHeight}>{item.title}</Title>
             <MainTextFS size={windowHeight}>{item.text}</MainTextFS>
-          </View>
+          </SafeAreaView>
         );
       case 2:
         return (
-          <View>
+          <SafeAreaView>
             <Title size={windowHeight}>{item.title}</Title>
             <Subtitle size={windowHeight}>{item.text}</Subtitle>
 
             <OnboardList />
-          </View>
+          </SafeAreaView>
         );
       case 3:
         return (
-          <View>
-            <Title size={windowHeight}>{item.title}</Title>
-            <Subtitle size={windowHeight}>{item.text}</Subtitle>
-            <List>
-              <MainWrapper>
-                <ImageWrapper
-                  colors={['rgba(132, 250, 176, 1)', 'rgba(143, 211, 244, 1)']}
-                  start={{x: 0, y: 0.5}}
-                  end={{x: 1, y: 0.5}}
-                  locations={[0.1153, 0.9143]}>
-                  <MainImage source={require('../assets/images/1.jpg')} />
-                </ImageWrapper>
-                <MainText>Егор Крид</MainText>
-              </MainWrapper>
+          <StyledSafeAreaView>
+            <Content>
+              <Title size={windowHeight}>{item.title}</Title>
+              <Subtitle size={windowHeight}>{item.text}</Subtitle>
+              <List>
+                <MainWrapper>
+                  <ImageWrapper
+                    colors={[
+                      'rgba(132, 250, 176, 1)',
+                      'rgba(143, 211, 244, 1)',
+                    ]}
+                    start={{x: 0, y: 0.5}}
+                    end={{x: 1, y: 0.5}}
+                    locations={[0.1153, 0.9143]}>
+                    <MainImage source={require('../assets/images/1.jpg')} />
+                  </ImageWrapper>
+                  <MainText>Егор Крид</MainText>
+                </MainWrapper>
 
-              <ConnectorWrapper>
-                <Icon name={'Connector'} />
-              </ConnectorWrapper>
+                <ConnectorWrapper>
+                  <Icon name={'Connector'} />
+                </ConnectorWrapper>
 
-              <MainWrapper>
-                <ImageWrapper
-                  colors={['#36D1DC', '#5B86E5']}
-                  start={{x: 0, y: 0.5}}
-                  end={{x: 1, y: 0.5}}
-                  locations={[0.1153, 0.9143]}>
-                  <MainImage source={require('../assets/images/2.jpg')} />
-                </ImageWrapper>
-                <MainText>Кори Тейлор</MainText>
-              </MainWrapper>
-            </List>
+                <MainWrapper>
+                  <ImageWrapper
+                    colors={['#36D1DC', '#5B86E5']}
+                    start={{x: 0, y: 0.5}}
+                    end={{x: 1, y: 0.5}}
+                    locations={[0.1153, 0.9143]}>
+                    <MainImage source={require('../assets/images/2.jpg')} />
+                  </ImageWrapper>
+                  <MainText>Кори Тейлор</MainText>
+                </MainWrapper>
+              </List>
+            </Content>
 
             <NextButton size={windowHeight} onPress={handleDoneFinish}>
               <StyledGradient
@@ -101,7 +107,7 @@ function Onboard({handleDone}: OnboardProps) {
                 <NextButtonText>Начать</NextButtonText>
               </StyledGradient>
             </NextButton>
-          </View>
+          </StyledSafeAreaView>
         );
       default:
         return null;
@@ -128,6 +134,15 @@ function Onboard({handleDone}: OnboardProps) {
 
 export default Onboard;
 
+const Content = styled.View`
+  flex: 1 0 auto;
+`;
+
+const StyledSafeAreaView = styled(SafeAreaView)`
+  flex-direction: column;
+  height: 95%;
+`;
+
 const StyledGradient = styled(LinearGradient)`
   width: 284px;
   height: 50px;
@@ -136,9 +151,10 @@ const StyledGradient = styled(LinearGradient)`
 `;
 
 const NextButton = styled.TouchableOpacity`
+  flex: 0 0 auto;
   margin-left: auto;
   margin-right: auto;
-  margin-top: ${({size}) => (size >= 700 ? '83px' : '13px')};
+  margin-bottom: 30px;
   width: 284px;
   height: 50px;
   border-radius: ${({theme}) => theme.borderRadius.button};
@@ -160,7 +176,7 @@ const ImageWrapper = styled(LinearGradient)`
 `;
 
 const Title = styled.Text`
-  margin-top: ${({size}) => (size >= 700 ? '25%' : '5%')};
+  margin-top: ${({size}) => (size >= 700 ? '12%' : '5%')};
   text-align: center;
   line-height: ${({theme}) => theme.lineHeight.onboardTitle};
   font-size: ${({theme}) => theme.typeScale.onboardTitle};

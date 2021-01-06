@@ -8,6 +8,7 @@ import Icon from 'components/UI/Icon';
 import NextButton from 'components/UI/NextButton';
 import {Dimensions} from 'react-native';
 import {RouteProp, useRoute} from '@react-navigation/native';
+import {StyleSheet} from 'react-native';
 
 const windowHeight = Dimensions.get('window').height;
 const flatlistHeight = windowHeight - 540;
@@ -73,7 +74,7 @@ function MatchingDoneScreen() {
 
       <FlatlistWrapper>
         <FlatList
-          contentContainerStyle={{flexGrow: 1}}
+          contentContainerStyle={styles.contentContainer}
           data={matchedData}
           renderItem={renderSearchItem}></FlatList>
       </FlatlistWrapper>
@@ -100,6 +101,13 @@ function MatchingDoneScreen() {
 }
 
 export default MatchingDoneScreen;
+
+const styles = StyleSheet.create({
+  contentContainer: {
+    paddingHorizontal: 40,
+    flexGrow: 1,
+  },
+});
 
 const FlatList = styled.FlatList`
   height: ${flatlistHeight}px;

@@ -26,6 +26,7 @@ export default function PasswordInput({title, icon}: IconTextInputProps) {
 const Container = styled.View`
   padding-left: 10px;
   padding-right: 10px;
+  margin-bottom: 20px;
 `;
 
 const InputContainer = styled.View`

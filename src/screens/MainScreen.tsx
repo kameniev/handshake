@@ -13,7 +13,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'components/UI/Icon';
 import Modal from 'screens/Modal';
 import {useNavigation} from '@react-navigation/native';
-import {useRoute} from '@react-navigation/native';
 
 function MainScreen() {
   const navigation = useNavigation();
@@ -33,7 +32,6 @@ function MainScreen() {
   const headerComponent = () => {
     return (
       <HeaderWrapper>
-        <IconTextInput title={'Никнейм или имя пользователя'} icon={'Search'} />
         <Subtitle>Рукопожатия со звёздами</Subtitle>
         <StyledModal />
       </HeaderWrapper>
@@ -52,10 +50,17 @@ function MainScreen() {
               <Icon name={'Settings'} width={35} />
             </StyledGradient>
           </SettingsButton>
-          <FlatList
-            data={searchData}
-            renderItem={renderSearchItem}
-            ListHeaderComponent={headerComponent}></FlatList>
+          <FlatListContainer>
+            <IconTextInput
+              title={'Никнейм или имя пользователя'}
+              icon={'Search'}
+            />
+
+            <FlatList
+              data={searchData}
+              renderItem={renderSearchItem}
+              ListHeaderComponent={headerComponent}></FlatList>
+          </FlatListContainer>
         </Container>
       </TouchableWithoutFeedback>
     </SafeAreaView>
@@ -66,6 +71,10 @@ export default MainScreen;
 
 const HeaderWrapper = styled.View`
   margin-bottom: 32px;
+`;
+
+const FlatListContainer = styled.View`
+  height: 100%;
 `;
 
 const StyledGradient = styled(LinearGradient)`
@@ -88,7 +97,7 @@ const SettingsButton = styled.TouchableOpacity`
 `;
 
 const Subtitle = styled.Text`
-  margin-top: 30px;
+  margin-top: 10px;
   color: ${({theme}) => theme.colors.ui.blue};
   font-family: ${({theme}) => theme.fontFamilyNunitoBold};
   font-size: ${({theme}) => theme.typeScale.subtitle};
